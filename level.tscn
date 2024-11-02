@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6nd4v8iwx72j"]
+
+[ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://player.tscn" id="1_f7bp2"]
+[ext_resource type="Script" path="res://apple_spawner.gd" id="2_mg8th"]
+
+[node name="Level" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_f7bp2")]
+position = Vector2(0, 251)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AppleSpawner" type="Node2D" parent="."]
+position = Vector2(0, -500)
+script = ExtResource("2_mg8th")
+
+[node name="Timer" type="Timer" parent="AppleSpawner"]
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 384.0
+offset_top = -323.0
+offset_right = 572.0
+offset_bottom = -254.0
+theme_override_font_sizes/font_size = 50
+text = "Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
