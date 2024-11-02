@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b6d2x0seaxd5o" path="res://icon.svg" id="1_rxsg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2swmd"]
+size = Vector2(42, 42)
 
 [node name="Apple" type="RigidBody2D"]
 collision_layer = 2
