@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=4 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://player.tscn" id="1_f7bp2"]
 [ext_resource type="Script" path="res://apple_spawner.gd" id="2_mg8th"]
+[ext_resource type="Script" path="res://screen_wrapping.gd" id="3_i6juk"]
 
 [node name="Level" type="Node2D"]
 
@@ -26,5 +27,8 @@ theme_override_font_sizes/font_size = 50
 text = "Score: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ScreenWrapping" type="Node2D" parent="."]
+script = ExtResource("3_i6juk")
 
 [connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
