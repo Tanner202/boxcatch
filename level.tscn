@@ -19,7 +19,7 @@ script = ExtResource("2_mg8th")
 autostart = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 384.0
+offset_left = 175.0
 offset_top = -323.0
 offset_right = 572.0
 offset_bottom = -254.0
