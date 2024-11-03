@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var speed = 50
-@onready var timer: Timer = $Timer
 
 var is_catching = false
 var is_retracting = false
