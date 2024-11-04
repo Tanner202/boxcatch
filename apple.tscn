@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmdjaup77x2kl"]
 
-[ext_resource type="Texture2D" uid="uid://b6d2x0seaxd5o" path="res://icon.svg" id="1_rxsg6"]
+[ext_resource type="Texture2D" uid="uid://crswrxifcpkh6" path="res://apple.png" id="1_bxa6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2swmd"]
-size = Vector2(42, 42)
+size = Vector2(34, 42)
 
 [node name="Apple" type="RigidBody2D"]
 collision_layer = 2
@@ -11,8 +11,9 @@ collision_mask = 0
 gravity_scale = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2swmd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_rxsg6")
+scale = Vector2(2.62, 2.62)
+texture = ExtResource("1_bxa6x")
