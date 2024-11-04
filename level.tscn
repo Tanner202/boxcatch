@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=11 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://player.tscn" id="1_f7bp2"]
 [ext_resource type="Script" path="res://apple_spawner.gd" id="2_mg8th"]
@@ -8,13 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://red_heart_online.png" id="6_p7gk4"]
 [ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://broken_heart_online.png" id="6_vc6fx"]
 [ext_resource type="Script" path="res://ground.gd" id="6_y1d8p"]
+[ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://pixel_art_background.jpg" id="9_nqfr7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6gqw"]
 
 [node name="Level" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f7bp2")]
-position = Vector2(0, 251)
+position = Vector2(0, 201)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -42,10 +43,10 @@ script = ExtResource("3_i6juk")
 script = ExtResource("4_ht38c")
 
 [node name="HealthUI" type="HBoxContainer" parent="."]
-offset_left = -560.0
-offset_top = 265.0
-offset_right = -520.0
-offset_bottom = 305.0
+offset_left = -553.0
+offset_top = -309.0
+offset_right = -403.0
+offset_bottom = -269.0
 theme_override_constants/separation = 15
 script = ExtResource("5_xtv6d")
 broken_heart_texture = ExtResource("6_vc6fx")
@@ -66,12 +67,18 @@ texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
 [node name="Ground" type="Area2D" parent="."]
-position = Vector2(0, 324)
+position = Vector2(0, 261)
 collision_mask = 2
 script = ExtResource("6_y1d8p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_p6gqw")
+
+[node name="PixelArtBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-4, 42)
+scale = Vector2(2, 2)
+texture = ExtResource("9_nqfr7")
 
 [connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
