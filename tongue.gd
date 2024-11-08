@@ -4,7 +4,7 @@ extends Node2D
 
 var is_catching = false
 var is_retracting = false
-var max_scale = 4
+var max_scale = 8
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("catch") and !is_catching:

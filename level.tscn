@@ -15,23 +15,23 @@
 [node name="Level" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f7bp2")]
-position = Vector2(0, 201)
+position = Vector2(0, 75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AppleSpawner" type="Node2D" parent="."]
-position = Vector2(0, -500)
+position = Vector2(0, -169)
 script = ExtResource("2_mg8th")
 
 [node name="Timer" type="Timer" parent="AppleSpawner"]
 autostart = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 175.0
-offset_top = -323.0
-offset_right = 572.0
-offset_bottom = -254.0
-theme_override_font_sizes/font_size = 50
+offset_left = 52.0
+offset_top = -134.0
+offset_right = 238.0
+offset_bottom = -106.0
+theme_override_font_sizes/font_size = 20
 text = "Score: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -43,11 +43,12 @@ script = ExtResource("3_i6juk")
 script = ExtResource("4_ht38c")
 
 [node name="HealthUI" type="HBoxContainer" parent="."]
-offset_left = -553.0
-offset_top = -309.0
-offset_right = -403.0
-offset_bottom = -269.0
-theme_override_constants/separation = 15
+offset_left = -232.0
+offset_top = -130.0
+offset_right = -82.0
+offset_bottom = -90.0
+scale = Vector2(0.36706, 0.356393)
+theme_override_constants/separation = 1
 script = ExtResource("5_xtv6d")
 broken_heart_texture = ExtResource("6_vc6fx")
 
@@ -67,7 +68,7 @@ texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
 [node name="Ground" type="Area2D" parent="."]
-position = Vector2(0, 261)
+position = Vector2(2, 99)
 collision_mask = 2
 script = ExtResource("6_y1d8p")
 
@@ -76,8 +77,8 @@ shape = SubResource("WorldBoundaryShape2D_p6gqw")
 
 [node name="PixelArtBackground" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-4, 42)
-scale = Vector2(2, 2)
+position = Vector2(0, 11)
+scale = Vector2(0.79, 0.806)
 texture = ExtResource("9_nqfr7")
 
 [connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
