@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=14 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://player.tscn" id="1_f7bp2"]
 [ext_resource type="Script" path="res://apple_spawner.gd" id="2_mg8th"]
 [ext_resource type="Script" path="res://screen_wrapping.gd" id="3_i6juk"]
+[ext_resource type="Script" path="res://score_label.gd" id="3_u2yux"]
 [ext_resource type="Script" path="res://health.gd" id="4_ht38c"]
 [ext_resource type="Script" path="res://health_ui.gd" id="5_xtv6d"]
 [ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://red_heart_online.png" id="6_p7gk4"]
 [ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://broken_heart_online.png" id="6_vc6fx"]
 [ext_resource type="Script" path="res://ground.gd" id="6_y1d8p"]
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://pixel_art_background.jpg" id="9_nqfr7"]
+[ext_resource type="Script" path="res://game_over_screen.gd" id="10_boq7h"]
+[ext_resource type="Script" path="res://score_manager.gd" id="11_i245f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6gqw"]
 
@@ -26,7 +29,7 @@ script = ExtResource("2_mg8th")
 [node name="Timer" type="Timer" parent="AppleSpawner"]
 autostart = true
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." node_paths=PackedStringArray("player")]
 offset_left = 52.0
 offset_top = -134.0
 offset_right = 238.0
@@ -35,6 +38,8 @@ theme_override_font_sizes/font_size = 20
 text = "Score: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("3_u2yux")
+player = NodePath("../CharacterBody2D")
 
 [node name="ScreenWrapping" type="Node2D" parent="."]
 script = ExtResource("3_i6juk")
@@ -81,5 +86,40 @@ position = Vector2(0, 11)
 scale = Vector2(0.79, 0.806)
 texture = ExtResource("9_nqfr7")
 
+[node name="GameOverScreen" type="Node2D" parent="."]
+visible = false
+script = ExtResource("10_boq7h")
+
+[node name="GameOverTxt1" type="Label" parent="GameOverScreen"]
+offset_left = -46.0
+offset_top = -90.0
+offset_right = 46.0
+offset_bottom = -67.0
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTxt" type="Label" parent="GameOverScreen"]
+offset_left = -46.0
+offset_top = -69.0
+offset_right = 46.0
+offset_bottom = -46.0
+text = "Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryBtn" type="MenuButton" parent="GameOverScreen"]
+offset_left = -27.0
+offset_top = -46.0
+offset_right = 23.0
+offset_bottom = -15.0
+text = "Retry"
+
+[node name="ScoreManager" type="Node2D" parent="."]
+script = ExtResource("11_i245f")
+
+[connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
 [connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
+[connection signal="pressed" from="GameOverScreen/RetryBtn" to="GameOverScreen" method="_on_retry_btn_pressed"]
+[connection signal="on_score_changed" from="ScoreManager" to="ScoreLabel" method="_on_score_manager_on_score_changed"]

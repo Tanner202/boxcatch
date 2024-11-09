@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal on_item_collected
+
 @export var SPEED = 300.0
 
 func _physics_process(delta: float) -> void:
@@ -10,3 +12,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	on_item_collected.emit()

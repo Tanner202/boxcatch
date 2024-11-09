@@ -44,4 +44,5 @@ script = ExtResource("3_ijq3l")
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_ekasc")
 
+[connection signal="body_entered" from="Tongue/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Tongue/Area2D" to="Tongue/Area2D" method="_on_body_entered"]
