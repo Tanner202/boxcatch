@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dworwmi235pub"
-path="res://.godot/imported/tongue.png-748d6ec85454f2518fa24eaa7dec26fa.ctex"
+uid="uid://b0jut8pembyg5"
+path="res://.godot/imported/red_heart_online.png-045b22cca74c9cde82affda7d1c093ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tongue.png"
-dest_files=["res://.godot/imported/tongue.png-748d6ec85454f2518fa24eaa7dec26fa.ctex"]
+source_file="res://Art/red_heart_online.png"
+dest_files=["res://.godot/imported/red_heart_online.png-045b22cca74c9cde82affda7d1c093ff.ctex"]
 
 [params]
 

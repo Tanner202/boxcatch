@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmsjovfr67uy4"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_kk8jo"]
-[ext_resource type="Texture2D" uid="uid://dtikgivtwtbuo" path="res://frog.png" id="2_djcnn"]
-[ext_resource type="Script" path="res://tongue.gd" id="3_grq7w"]
-[ext_resource type="Script" path="res://item_collection.gd" id="3_ijq3l"]
-[ext_resource type="Texture2D" uid="uid://60t7aqf1sgh" path="res://New Piskel (6).png" id="4_4j4ag"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_kk8jo"]
+[ext_resource type="Texture2D" uid="uid://dtikgivtwtbuo" path="res://Art/frog.png" id="2_djcnn"]
+[ext_resource type="Script" path="res://Scripts/tongue.gd" id="3_grq7w"]
+[ext_resource type="Script" path="res://Scripts/item_collection.gd" id="3_ijq3l"]
+[ext_resource type="Texture2D" uid="uid://60t7aqf1sgh" path="res://Art/New Piskel (6).png" id="4_4j4ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itjko"]
 size = Vector2(58, 43)

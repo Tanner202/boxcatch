@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://60t7aqf1sgh"
-path="res://.godot/imported/New Piskel (6).png-0b1ff741bd2272172bc25fe17d22adde.ctex"
+uid="uid://dtikgivtwtbuo"
+path="res://.godot/imported/frog.png-e725e3a132d71a9be08e2a5934ea77a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://New Piskel (6).png"
-dest_files=["res://.godot/imported/New Piskel (6).png-0b1ff741bd2272172bc25fe17d22adde.ctex"]
+source_file="res://Art/frog.png"
+dest_files=["res://.godot/imported/frog.png-e725e3a132d71a9be08e2a5934ea77a9.ctex"]
 
 [params]
 

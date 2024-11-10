@@ -1,17 +1,17 @@
 [gd_scene load_steps=14 format=3 uid="uid://c6nd4v8iwx72j"]
 
-[ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://player.tscn" id="1_f7bp2"]
-[ext_resource type="Script" path="res://apple_spawner.gd" id="2_mg8th"]
-[ext_resource type="Script" path="res://screen_wrapping.gd" id="3_i6juk"]
-[ext_resource type="Script" path="res://score_label.gd" id="3_u2yux"]
-[ext_resource type="Script" path="res://health.gd" id="4_ht38c"]
-[ext_resource type="Script" path="res://health_ui.gd" id="5_xtv6d"]
-[ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://red_heart_online.png" id="6_p7gk4"]
-[ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://broken_heart_online.png" id="6_vc6fx"]
-[ext_resource type="Script" path="res://ground.gd" id="6_y1d8p"]
-[ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://pixel_art_background.jpg" id="9_nqfr7"]
-[ext_resource type="Script" path="res://game_over_screen.gd" id="10_boq7h"]
-[ext_resource type="Script" path="res://score_manager.gd" id="11_i245f"]
+[ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://Scenes/player.tscn" id="1_f7bp2"]
+[ext_resource type="Script" path="res://Scripts/apple_spawner.gd" id="2_mg8th"]
+[ext_resource type="Script" path="res://Scripts/screen_wrapping.gd" id="3_i6juk"]
+[ext_resource type="Script" path="res://Scripts/score_label.gd" id="3_u2yux"]
+[ext_resource type="Script" path="res://Scripts/health.gd" id="4_ht38c"]
+[ext_resource type="Script" path="res://Scripts/health_ui.gd" id="5_xtv6d"]
+[ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://Art/red_heart_online.png" id="6_p7gk4"]
+[ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://Art/broken_heart_online.png" id="6_vc6fx"]
+[ext_resource type="Script" path="res://Scripts/ground.gd" id="6_y1d8p"]
+[ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="9_nqfr7"]
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="10_boq7h"]
+[ext_resource type="Script" path="res://Scripts/score_manager.gd" id="11_i245f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6gqw"]
 
@@ -109,6 +109,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RetryBtn" type="MenuButton" parent="GameOverScreen"]
+process_mode = 3
 offset_left = -27.0
 offset_top = -46.0
 offset_right = 23.0

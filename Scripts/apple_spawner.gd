@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var apple = preload("res://apple.tscn")
+@export var apple = preload("res://Scenes/apple.tscn")
 var screen_size
 
 func _ready() -> void:
