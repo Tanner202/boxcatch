@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=15 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://Scenes/player.tscn" id="1_f7bp2"]
 [ext_resource type="Script" path="res://Scripts/apple_spawner.gd" id="2_mg8th"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="9_nqfr7"]
 [ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="10_boq7h"]
 [ext_resource type="Script" path="res://Scripts/score_manager.gd" id="11_i245f"]
+[ext_resource type="PackedScene" uid="uid://82lmtoulr6lj" path="res://Scenes/pause_menu.tscn" id="13_1dhpa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6gqw"]
 
@@ -118,6 +119,13 @@ text = "Retry"
 
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("11_i245f")
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_1dhpa")]
+visible = false
+offset_left = -50.0
+offset_top = -51.0
+offset_right = -50.0
+offset_bottom = -51.0
 
 [connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
 [connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5cnbc2j2y22l"]
 
-[ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://pixel_art_background.jpg" id="1_mot18"]
+[ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="1_mot18"]
 [ext_resource type="Script" path="res://menu.gd" id="2_yi726"]
 
 [node name="MainMenu" type="Node2D"]

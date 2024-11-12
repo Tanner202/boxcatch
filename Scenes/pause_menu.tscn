@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_7q0d7"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7q0d7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 98.0
+offset_bottom = 109.0
+color = Color(0.360784, 0.360784, 0.360784, 0.819608)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
