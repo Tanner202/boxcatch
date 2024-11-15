@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=16 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://Scenes/player.tscn" id="1_f7bp2"]
-[ext_resource type="Script" path="res://Scripts/apple_spawner.gd" id="2_mg8th"]
+[ext_resource type="PackedScene" uid="uid://rqou7mvaicud" path="res://Scenes/item_spawner.tscn" id="2_bu6o4"]
+[ext_resource type="PackedScene" uid="uid://cmdjaup77x2kl" path="res://Scenes/apple.tscn" id="3_efcr0"]
 [ext_resource type="Script" path="res://Scripts/screen_wrapping.gd" id="3_i6juk"]
 [ext_resource type="Script" path="res://Scripts/score_label.gd" id="3_u2yux"]
 [ext_resource type="Script" path="res://Scripts/health.gd" id="4_ht38c"]
@@ -23,12 +24,15 @@ position = Vector2(0, 75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AppleSpawner" type="Node2D" parent="."]
-position = Vector2(0, -169)
-script = ExtResource("2_mg8th")
+[node name="AppleSpawner" parent="." instance=ExtResource("2_bu6o4")]
+item_to_spawn = ExtResource("3_efcr0")
 
-[node name="Timer" type="Timer" parent="AppleSpawner"]
-autostart = true
+[node name="FlySpawner" parent="." instance=ExtResource("2_bu6o4")]
+position = Vector2(-275, -25)
+item_to_spawn = ExtResource("13_i64jx")
+is_horizontal = false
+timer_cooldown = 10
+y_offset = 25.0
 
 [node name="ScoreLabel" type="Label" parent="." node_paths=PackedStringArray("player")]
 offset_left = 52.0
@@ -129,11 +133,7 @@ text = "Retry"
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("11_i245f")
 
-[node name="Bug" parent="." instance=ExtResource("13_i64jx")]
-position = Vector2(-101, -3)
-
 [connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
-[connection signal="timeout" from="AppleSpawner/Timer" to="AppleSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
 [connection signal="area_entered" from="Side" to="Side" method="_on_area_entered"]
 [connection signal="body_entered" from="Side" to="Side" method="_on_body_entered"]
