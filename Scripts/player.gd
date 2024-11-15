@@ -11,6 +11,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = SPEED
 	else:
 		velocity.x = 0
+		
+	if Input.is_action_pressed("slow_down"):
+		velocity.x /= 2
 	move_and_slide()
 
 
