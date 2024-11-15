@@ -134,8 +134,15 @@ text = "Retry"
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("11_i245f")
 
-[node name="DifficultyScaling" type="Node2D" parent="."]
+[node name="AppleDifficultyScaling" type="Node2D" parent="." node_paths=PackedStringArray("spawner")]
 script = ExtResource("15_nj3xm")
+spawner = NodePath("../AppleSpawner")
+
+[node name="FlyDifficultyScaling" type="Node2D" parent="." node_paths=PackedStringArray("spawner")]
+script = ExtResource("15_nj3xm")
+spawner = NodePath("../FlySpawner")
+min_spawn_interval = 5
+starting_spawn_interval = 10
 
 [connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
