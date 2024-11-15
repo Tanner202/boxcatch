@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5cnbc2j2y22l"]
 
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="1_mot18"]
-[ext_resource type="Script" path="res://menu.gd" id="2_yi726"]
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="2_21e0n"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -16,7 +16,7 @@ offset_left = -64.0
 offset_top = -77.0
 offset_right = 64.0
 offset_bottom = 38.0
-script = ExtResource("2_yi726")
+script = ExtResource("2_21e0n")
 
 [node name="Label" type="Label" parent="Menu"]
 layout_mode = 2
