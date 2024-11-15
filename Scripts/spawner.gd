@@ -26,3 +26,6 @@ func spawn_vertically():
 	var spawned_item = item_to_spawn.instantiate()
 	spawned_item.global_position = Vector2(global_position.x, position.y + randf_range(-y_offset, y_offset))
 	get_tree().root.get_node("Level").add_child(spawned_item)
+	
+func set_spawn_interval(new_cooldown: float):
+	timer.wait_time = new_cooldown
