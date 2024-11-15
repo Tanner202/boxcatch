@@ -17,4 +17,4 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 
 func _on_exit_button_pressed() -> void:
-	print("exit")
+	hide()

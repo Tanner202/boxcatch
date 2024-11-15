@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://82lmtoulr6lj"]
+[gd_scene load_steps=3 format=3 uid="uid://82lmtoulr6lj"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_7q0d7"]
+[ext_resource type="PackedScene" uid="uid://b55qpoq55ygxo" path="res://Scenes/settings_menu.tscn" id="2_nkpba"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -12,29 +13,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7q0d7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 98.0
-offset_bottom = 109.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
 color = Color(0.360784, 0.360784, 0.360784, 0.819608)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 
-[node name="ResumeBtn" type="MenuButton" parent="VBoxContainer"]
+[node name="ResumeBtn" type="MenuButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
 
-[node name="SettingsBtn" type="MenuButton" parent="VBoxContainer"]
+[node name="SettingsBtn" type="MenuButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 
-[node name="MainMenuBtn" type="MenuButton" parent="VBoxContainer"]
+[node name="MainMenuBtn" type="MenuButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
+[node name="settings_menu" parent="." instance=ExtResource("2_nkpba")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

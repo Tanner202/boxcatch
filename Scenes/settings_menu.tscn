@@ -12,7 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2abu6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,30 +32,30 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume"
 
-[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+[node name="VolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 value = 50.0
 
-[node name="MuteLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MuteLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mute
 "
 
-[node name="MuteCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+[node name="MuteCheckBox" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+[node name="FullscreenCheckBox" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="ExitButton" type="Button" parent="."]
@@ -58,7 +66,7 @@ offset_right = 37.0
 offset_bottom = 36.0
 icon = ExtResource("2_kc7kq")
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/MuteCheckBox" to="." method="_on_check_box_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/MuteCheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

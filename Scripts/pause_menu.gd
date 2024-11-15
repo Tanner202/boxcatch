@@ -1,6 +1,7 @@
 extends Control
 
 var main_menu = preload("res://Scenes/main_menu.tscn")
+@onready var settings_menu: Control = $settings_menu
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -16,7 +17,7 @@ func _on_resume_btn_pressed() -> void:
 
 
 func _on_settings_btn_pressed() -> void:
-	print("Settings Menu")
+	settings_menu.show()
 
 
 func _on_main_menu_btn_pressed() -> void:
