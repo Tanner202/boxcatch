@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var gpu_particles_2d = preload("res://Scenes/apple_explosion.tscn")
+@export var gpu_particles_2d : PackedScene
 
 func explode():
 	var particles = gpu_particles_2d.instantiate()
