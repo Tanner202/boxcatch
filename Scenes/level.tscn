@@ -26,43 +26,21 @@ position = Vector2(0, 75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AppleSpawner" parent="." instance=ExtResource("2_bu6o4")]
-item_to_spawn = ExtResource("3_efcr0")
-
-[node name="FlySpawner" parent="." instance=ExtResource("2_bu6o4")]
-position = Vector2(-256, -25)
-item_to_spawn = ExtResource("13_i64jx")
-is_horizontal = false
-timer_cooldown = 10
-y_offset = 25.0
-
-[node name="FlySpawner2" parent="." instance=ExtResource("2_bu6o4")]
-position = Vector2(256, -25)
-item_to_spawn = ExtResource("13_i64jx")
-is_horizontal = false
-timer_cooldown = 20
-y_offset = 25.0
-vertical_direction = -1
-
-[node name="ScoreLabel" type="Label" parent="." node_paths=PackedStringArray("player")]
-offset_left = 52.0
-offset_top = -134.0
-offset_right = 238.0
-offset_bottom = -106.0
-theme_override_font_sizes/font_size = 20
-text = "Score: 0"
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("3_u2yux")
-player = NodePath("../CharacterBody2D")
-
 [node name="ScreenWrapping" type="Node2D" parent="."]
 script = ExtResource("3_i6juk")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("4_ht38c")
 
-[node name="HealthUI" type="HBoxContainer" parent="."]
+[node name="ScoreManager" type="Node2D" parent="."]
+script = ExtResource("11_i245f")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("16_8a176")]
+visible = false
+
+[node name="HealthUI" type="HBoxContainer" parent="UI"]
 offset_left = -232.0
 offset_top = -130.0
 offset_right = -82.0
@@ -72,58 +50,38 @@ theme_override_constants/separation = 1
 script = ExtResource("5_xtv6d")
 broken_heart_texture = ExtResource("6_vc6fx")
 
-[node name="TextureRect" type="TextureRect" parent="HealthUI"]
+[node name="TextureRect" type="TextureRect" parent="UI/HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="HealthUI"]
+[node name="TextureRect2" type="TextureRect" parent="UI/HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="HealthUI"]
+[node name="TextureRect3" type="TextureRect" parent="UI/HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="Ground" type="Area2D" parent="."]
-position = Vector2(2, 99)
-collision_mask = 2
-script = ExtResource("6_y1d8p")
+[node name="ScoreLabel" type="Label" parent="UI" node_paths=PackedStringArray("player")]
+offset_left = 52.0
+offset_top = -134.0
+offset_right = 238.0
+offset_bottom = -106.0
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("3_u2yux")
+player = NodePath("../../CharacterBody2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("WorldBoundaryShape2D_p6gqw")
-
-[node name="Side" type="Area2D" parent="."]
-position = Vector2(276, -57)
-rotation = 4.71239
-collision_mask = 2
-script = ExtResource("6_y1d8p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Side"]
-shape = SubResource("WorldBoundaryShape2D_p6gqw")
-
-[node name="Side2" type="Area2D" parent="."]
-position = Vector2(-274, -26)
-rotation = 1.5708
-collision_mask = 2
-script = ExtResource("6_y1d8p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Side2"]
-shape = SubResource("WorldBoundaryShape2D_p6gqw")
-
-[node name="PixelArtBackground" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(0, 11)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("9_nqfr7")
-
-[node name="GameOverScreen" type="Node2D" parent="."]
+[node name="GameOverScreen" type="Node2D" parent="UI"]
 visible = false
 script = ExtResource("10_boq7h")
 
-[node name="GameOverTxt1" type="Label" parent="GameOverScreen"]
+[node name="GameOverTxt1" type="Label" parent="UI/GameOverScreen"]
 offset_left = -46.0
 offset_top = -90.0
 offset_right = 46.0
@@ -132,7 +90,7 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreTxt" type="Label" parent="GameOverScreen"]
+[node name="ScoreTxt" type="Label" parent="UI/GameOverScreen"]
 offset_left = -46.0
 offset_top = -69.0
 offset_right = 46.0
@@ -141,7 +99,7 @@ text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RetryBtn" type="MenuButton" parent="GameOverScreen"]
+[node name="RetryBtn" type="MenuButton" parent="UI/GameOverScreen"]
 process_mode = 3
 offset_left = -27.0
 offset_top = -46.0
@@ -149,29 +107,75 @@ offset_right = 23.0
 offset_bottom = -15.0
 text = "Retry"
 
-[node name="ScoreManager" type="Node2D" parent="."]
-script = ExtResource("11_i245f")
+[node name="Borders" type="Node2D" parent="."]
 
-[node name="AppleDifficultyScaling" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
+[node name="Ground" type="Area2D" parent="Borders"]
+position = Vector2(2, 99)
+collision_mask = 2
+script = ExtResource("6_y1d8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ground"]
+shape = SubResource("WorldBoundaryShape2D_p6gqw")
+
+[node name="Side" type="Area2D" parent="Borders"]
+position = Vector2(276, -57)
+rotation = -1.5708
+collision_mask = 2
+script = ExtResource("6_y1d8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Side"]
+shape = SubResource("WorldBoundaryShape2D_p6gqw")
+
+[node name="Side2" type="Area2D" parent="Borders"]
+position = Vector2(-274, -26)
+rotation = 1.5708
+collision_mask = 2
+script = ExtResource("6_y1d8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Side2"]
+shape = SubResource("WorldBoundaryShape2D_p6gqw")
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="AppleDifficultyScaling" type="Node2D" parent="Spawners" node_paths=PackedStringArray("spawners")]
 script = ExtResource("15_nj3xm")
 spawners = [NodePath("../AppleSpawner")]
 
-[node name="FlyDifficultyScaling" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
+[node name="FlyDifficultyScaling" type="Node2D" parent="Spawners" node_paths=PackedStringArray("spawners")]
 script = ExtResource("15_nj3xm")
 spawners = [NodePath("../FlySpawner"), NodePath("../FlySpawner2")]
 min_spawn_interval = 10
 starting_spawn_interval = 20
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AppleSpawner" parent="Spawners" instance=ExtResource("2_bu6o4")]
+item_to_spawn = ExtResource("3_efcr0")
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_8a176")]
-visible = false
+[node name="FlySpawner" parent="Spawners" instance=ExtResource("2_bu6o4")]
+position = Vector2(-256, -25)
+item_to_spawn = ExtResource("13_i64jx")
+is_horizontal = false
+timer_cooldown = 10
+y_offset = 25.0
+
+[node name="FlySpawner2" parent="Spawners" instance=ExtResource("2_bu6o4")]
+position = Vector2(256, -25)
+item_to_spawn = ExtResource("13_i64jx")
+is_horizontal = false
+timer_cooldown = 20
+y_offset = 25.0
+vertical_direction = -1
+
+[node name="PixelArtBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 11)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_nqfr7")
 
 [connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
-[connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
-[connection signal="area_entered" from="Side" to="Side" method="_on_area_entered"]
-[connection signal="body_entered" from="Side" to="Side" method="_on_body_entered"]
-[connection signal="area_entered" from="Side2" to="Side2" method="_on_area_entered"]
-[connection signal="body_entered" from="Side2" to="Side2" method="_on_body_entered"]
-[connection signal="pressed" from="GameOverScreen/RetryBtn" to="GameOverScreen" method="_on_retry_btn_pressed"]
-[connection signal="on_score_changed" from="ScoreManager" to="ScoreLabel" method="_on_score_manager_on_score_changed"]
+[connection signal="on_score_changed" from="ScoreManager" to="UI/ScoreLabel" method="_on_score_manager_on_score_changed"]
+[connection signal="pressed" from="UI/GameOverScreen/RetryBtn" to="UI/GameOverScreen" method="_on_retry_btn_pressed"]
+[connection signal="body_entered" from="Borders/Ground" to="Borders/Ground" method="_on_body_entered"]
+[connection signal="area_entered" from="Borders/Side" to="Borders/Side" method="_on_area_entered"]
+[connection signal="body_entered" from="Borders/Side" to="Borders/Side" method="_on_body_entered"]
+[connection signal="area_entered" from="Borders/Side2" to="Borders/Side2" method="_on_area_entered"]
+[connection signal="body_entered" from="Borders/Side2" to="Borders/Side2" method="_on_body_entered"]
