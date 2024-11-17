@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=18 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://Scenes/player.tscn" id="1_f7bp2"]
 [ext_resource type="PackedScene" uid="uid://rqou7mvaicud" path="res://Scenes/item_spawner.tscn" id="2_bu6o4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/score_manager.gd" id="11_i245f"]
 [ext_resource type="PackedScene" uid="uid://cqyi6a1g50eh1" path="res://Scenes/bug.tscn" id="13_i64jx"]
 [ext_resource type="Script" path="res://Scripts/difficulty_scaling.gd" id="15_nj3xm"]
+[ext_resource type="PackedScene" uid="uid://82lmtoulr6lj" path="res://Scenes/pause_menu.tscn" id="16_8a176"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6gqw"]
 
@@ -160,6 +161,11 @@ script = ExtResource("15_nj3xm")
 spawners = [NodePath("../FlySpawner"), NodePath("../FlySpawner2")]
 min_spawn_interval = 10
 starting_spawn_interval = 20
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_8a176")]
+visible = false
 
 [connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]

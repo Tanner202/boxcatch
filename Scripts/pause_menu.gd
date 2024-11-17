@@ -6,6 +6,7 @@ var main_menu = preload("res://Scenes/main_menu.tscn")
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
+			settings_menu.hide()
 			hide()
 		else:
 			show()
