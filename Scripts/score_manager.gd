@@ -6,7 +6,8 @@ var score = 0
 var high_score : int
 
 func _ready() -> void:
-	high_score = FileSaveSystem.load_data()["high-score"]
+	if FileSaveSystem.load_data().has("high-score"):
+		high_score = FileSaveSystem.load_data()["high-score"]
 
 func add_score(amount: int):
 	score += amount

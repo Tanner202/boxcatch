@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player: CharacterBody2D = $"../CharacterBody2D"
+@export var player : Node2D
 
 var screen_size
 

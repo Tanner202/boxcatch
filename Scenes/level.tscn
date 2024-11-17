@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6nd4v8iwx72j"]
+[gd_scene load_steps=17 format=3 uid="uid://c6nd4v8iwx72j"]
 
 [ext_resource type="PackedScene" uid="uid://bmsjovfr67uy4" path="res://Scenes/player.tscn" id="1_f7bp2"]
 [ext_resource type="PackedScene" uid="uid://rqou7mvaicud" path="res://Scenes/item_spawner.tscn" id="2_bu6o4"]
 [ext_resource type="PackedScene" uid="uid://cmdjaup77x2kl" path="res://Scenes/apple.tscn" id="3_efcr0"]
 [ext_resource type="Script" path="res://Scripts/screen_wrapping.gd" id="3_i6juk"]
 [ext_resource type="Script" path="res://Scripts/score_label.gd" id="3_u2yux"]
-[ext_resource type="Script" path="res://Scripts/health.gd" id="4_ht38c"]
 [ext_resource type="Script" path="res://Scripts/health_ui.gd" id="5_xtv6d"]
 [ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://Art/red_heart_online.png" id="6_p7gk4"]
 [ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://Art/broken_heart_online.png" id="6_vc6fx"]
@@ -21,26 +20,19 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_f7bp2")]
+[node name="Player" parent="." instance=ExtResource("1_f7bp2")]
 position = Vector2(0, 75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="ScreenWrapping" type="Node2D" parent="."]
+[node name="ScreenWrapping" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_i6juk")
-
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("4_ht38c")
+player = NodePath("../Player")
 
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("11_i245f")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("16_8a176")]
-visible = false
-
-[node name="HealthUI" type="HBoxContainer" parent="UI"]
+[node name="HealthUI" type="HBoxContainer" parent="."]
 offset_left = -232.0
 offset_top = -130.0
 offset_right = -82.0
@@ -50,22 +42,22 @@ theme_override_constants/separation = 1
 script = ExtResource("5_xtv6d")
 broken_heart_texture = ExtResource("6_vc6fx")
 
-[node name="TextureRect" type="TextureRect" parent="UI/HealthUI"]
+[node name="TextureRect" type="TextureRect" parent="HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="UI/HealthUI"]
+[node name="TextureRect2" type="TextureRect" parent="HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="UI/HealthUI"]
+[node name="TextureRect3" type="TextureRect" parent="HealthUI"]
 layout_mode = 2
 texture = ExtResource("6_p7gk4")
 expand_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="UI" node_paths=PackedStringArray("player")]
+[node name="ScoreLabel" type="Label" parent="." node_paths=PackedStringArray("player")]
 offset_left = 52.0
 offset_top = -134.0
 offset_right = 238.0
@@ -75,11 +67,19 @@ text = "Score: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("3_u2yux")
-player = NodePath("../../CharacterBody2D")
+player = NodePath("../Player")
 
-[node name="GameOverScreen" type="Node2D" parent="UI"]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("16_8a176")]
+visible = false
+
+[node name="GameOverScreen" type="Node2D" parent="UI" node_paths=PackedStringArray("score_txt", "game_over_txt", "retry_btn")]
 visible = false
 script = ExtResource("10_boq7h")
+score_txt = NodePath("ScoreTxt")
+game_over_txt = NodePath("GameOverTxt1")
+retry_btn = NodePath("RetryBtn")
 
 [node name="GameOverTxt1" type="Label" parent="UI/GameOverScreen"]
 offset_left = -46.0
@@ -171,8 +171,8 @@ position = Vector2(0, 11)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("9_nqfr7")
 
-[connection signal="on_item_collected" from="CharacterBody2D" to="ScoreManager" method="_on_item_collected"]
-[connection signal="on_score_changed" from="ScoreManager" to="UI/ScoreLabel" method="_on_score_manager_on_score_changed"]
+[connection signal="on_item_collected" from="Player" to="ScoreManager" method="_on_item_collected"]
+[connection signal="on_score_changed" from="ScoreManager" to="ScoreLabel" method="_on_score_manager_on_score_changed"]
 [connection signal="pressed" from="UI/GameOverScreen/RetryBtn" to="UI/GameOverScreen" method="_on_retry_btn_pressed"]
 [connection signal="body_entered" from="Borders/Ground" to="Borders/Ground" method="_on_body_entered"]
 [connection signal="area_entered" from="Borders/Side" to="Borders/Side" method="_on_area_entered"]

@@ -2,7 +2,12 @@ extends CharacterBody2D
 
 signal on_item_collected
 
+static var instance : Player
+@export var health : Health
 @export var SPEED = 300.0
+
+func _ready() -> void:
+	instance = self
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -23,3 +28,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	on_item_collected.emit()
+
+func get_health() -> Health:
+	return health

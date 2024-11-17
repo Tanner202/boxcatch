@@ -18,6 +18,8 @@ config/icon="res://Art/icon.svg"
 [autoload]
 
 FileSaveSystem="*res://Scripts/file_save_system.gd"
+ScoreManager="*res://Scripts/score_manager.gd"
+Player="*res://Scripts/player.gd"
 
 [display]
 
