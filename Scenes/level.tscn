@@ -69,19 +69,14 @@ vertical_alignment = 1
 script = ExtResource("3_u2yux")
 player = NodePath("../Player")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("16_8a176")]
-visible = false
-
-[node name="GameOverScreen" type="Node2D" parent="UI" node_paths=PackedStringArray("score_txt", "game_over_txt", "retry_btn")]
+[node name="GameOverScreen" type="Node2D" parent="." node_paths=PackedStringArray("score_txt", "game_over_txt", "retry_btn")]
 visible = false
 script = ExtResource("10_boq7h")
 score_txt = NodePath("ScoreTxt")
 game_over_txt = NodePath("GameOverTxt1")
 retry_btn = NodePath("RetryBtn")
 
-[node name="GameOverTxt1" type="Label" parent="UI/GameOverScreen"]
+[node name="GameOverTxt1" type="Label" parent="GameOverScreen"]
 offset_left = -46.0
 offset_top = -90.0
 offset_right = 46.0
@@ -90,7 +85,7 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreTxt" type="Label" parent="UI/GameOverScreen"]
+[node name="ScoreTxt" type="Label" parent="GameOverScreen"]
 offset_left = -46.0
 offset_top = -69.0
 offset_right = 46.0
@@ -99,13 +94,18 @@ text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RetryBtn" type="MenuButton" parent="UI/GameOverScreen"]
+[node name="RetryBtn" type="MenuButton" parent="GameOverScreen"]
 process_mode = 3
 offset_left = -27.0
 offset_top = -46.0
 offset_right = 23.0
 offset_bottom = -15.0
 text = "Retry"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("16_8a176")]
+visible = false
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -173,7 +173,7 @@ texture = ExtResource("9_nqfr7")
 
 [connection signal="on_item_collected" from="Player" to="ScoreManager" method="_on_item_collected"]
 [connection signal="on_score_changed" from="ScoreManager" to="ScoreLabel" method="_on_score_manager_on_score_changed"]
-[connection signal="pressed" from="UI/GameOverScreen/RetryBtn" to="UI/GameOverScreen" method="_on_retry_btn_pressed"]
+[connection signal="pressed" from="GameOverScreen/RetryBtn" to="GameOverScreen" method="_on_retry_btn_pressed"]
 [connection signal="body_entered" from="Borders/Ground" to="Borders/Ground" method="_on_body_entered"]
 [connection signal="area_entered" from="Borders/Side" to="Borders/Side" method="_on_area_entered"]
 [connection signal="body_entered" from="Borders/Side" to="Borders/Side" method="_on_body_entered"]

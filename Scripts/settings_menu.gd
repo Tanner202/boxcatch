@@ -1,7 +1,7 @@
 extends Control
 
-@onready var input_button = preload("res://Scenes/input_button.tscn")
-@onready var v_box_container: VBoxContainer = $Panel/MarginContainer/ScrollContainer/VBoxContainer
+@export var input_button : PackedScene
+@export var v_box_container : VBoxContainer
 
 var is_rebinding = false
 var active_button : Button

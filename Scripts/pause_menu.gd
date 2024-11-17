@@ -1,7 +1,7 @@
 extends Control
 
-var main_menu = preload("res://Scenes/main_menu.tscn")
-@onready var settings_menu: Control = $settings_menu
+@export var main_menu : PackedScene
+@export var settings_menu : Control
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

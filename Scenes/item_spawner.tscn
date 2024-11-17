@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_aahrj"]
 
-[node name="ItemSpawner" type="Node2D"]
+[node name="ItemSpawner" type="Node2D" node_paths=PackedStringArray("timer")]
 position = Vector2(0, -169)
 script = ExtResource("1_aahrj")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

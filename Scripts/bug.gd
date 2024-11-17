@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed = 50
-@onready var area_2d: Area2D = $Area2D
+@export var area_2d: Area2D
 var direction = 1
 
 func _process(delta: float) -> void:

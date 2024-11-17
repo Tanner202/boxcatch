@@ -32,8 +32,9 @@ _data = {
 "fly": SubResource("Animation_5eo61")
 }
 
-[node name="Bug" type="Node2D"]
+[node name="Bug" type="Node2D" node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_2tnsr")
+area_2d = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_w158k")

@@ -7,8 +7,9 @@ extends Node2D
 @export var timer_cooldown = 1
 @export_range(0, 100, 1) var y_offset
 @export var vertical_direction = 1
+@export var timer : Timer
+
 var screen_size
-@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
