@@ -10,7 +10,17 @@ var action_to_rebind : String
 var inputs = {"left": "Left", "right": "Right", "slow_down": "Slow Down", "catch": "Catch"}
 
 func _ready() -> void:
+	if FileSaveSystem.load_data().has("keybinds") && FileSaveSystem.load_data()["keybinds"] != null:
+		load_keybinds()
 	create_input_settings()
+	
+func load_keybinds():
+	var saved_keybinds = FileSaveSystem.load_data()["keybinds"]
+	print(saved_keybinds)
+	for action in InputMap.get_actions():
+		if action in saved_keybinds:
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, saved_keybinds[action])
 	
 func create_input_settings():
 	for input in InputMap.get_actions():
@@ -34,6 +44,7 @@ func _input(event: InputEvent) -> void:
 		InputMap.action_add_event(action_to_rebind, event)
 		active_button.find_child("KeybindLabel").text = event.as_text()
 		is_rebinding = false
+		FileSaveSystem.save_keybinds()
 		accept_event()
 
 
