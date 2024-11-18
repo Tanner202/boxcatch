@@ -6,14 +6,13 @@ var score = 0
 var high_score : int
 
 func _ready() -> void:
-	if FileSaveSystem.load_data().has("high-score"):
-		high_score = FileSaveSystem.load_data()["high-score"]
+	if FileSaveSystem.load_data().has(FileSaveSystem.HIGH_SCORE):
+		high_score = FileSaveSystem.load_data()[FileSaveSystem.HIGH_SCORE]
 
 func add_score(amount: int):
 	score += amount
 	on_score_changed.emit(score)
 	if score > high_score:
-		print("saved score")
 		FileSaveSystem.save_high_score(score)
 
 func get_score() -> int:
