@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://pde4huodnykn"]
+
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="1_5u00m"]
+[ext_resource type="PackedScene" uid="uid://5cnbc2j2y22l" path="res://Scenes/main_menu.tscn" id="2_11xwh"]
+
+[node name="GameOverScreen" type="Control" node_paths=PackedStringArray("game_over_txt", "score_txt", "high_score_txt", "retry_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5u00m")
+main_menu = ExtResource("2_11xwh")
+game_over_txt = NodePath("VBoxContainer/GameOverTxt")
+score_txt = NodePath("VBoxContainer/ScoreTxt")
+high_score_txt = NodePath("VBoxContainer/HighScoreTxt")
+retry_btn = NodePath("VBoxContainer/RetryBtn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameOverTxt" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTxt" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreTxt" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "High Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="RetryBtn" type="MenuButton" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Retry"
+
+[node name="MainMenuBtn" type="MenuButton" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Main Menu
+"
+
+[connection signal="pressed" from="VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

@@ -3,7 +3,7 @@ extends Node2D
 signal on_score_changed
 
 var score = 0
-var high_score : int
+var high_score : int = 0
 
 func _ready() -> void:
 	if FileSaveSystem.load_data().has(FileSaveSystem.HIGH_SCORE):
@@ -17,6 +17,9 @@ func add_score(amount: int):
 
 func get_score() -> int:
 	return score
+
+func get_high_score() -> int:
+	return high_score
 
 func _on_item_collected() -> void:
 	add_score(1)

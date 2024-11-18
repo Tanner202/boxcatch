@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b0jut8pembyg5" path="res://Art/red_heart_online.png" id="6_p7gk4"]
 [ext_resource type="Texture2D" uid="uid://bbe8d67hbldtx" path="res://Art/broken_heart_online.png" id="6_vc6fx"]
 [ext_resource type="Script" path="res://Scripts/ground.gd" id="6_y1d8p"]
+[ext_resource type="PackedScene" uid="uid://pde4huodnykn" path="res://Scenes/game_over_screen.tscn" id="8_63tqh"]
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="9_nqfr7"]
-[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="10_boq7h"]
 [ext_resource type="Script" path="res://Scripts/score_manager.gd" id="11_i245f"]
 [ext_resource type="PackedScene" uid="uid://cqyi6a1g50eh1" path="res://Scenes/bug.tscn" id="13_i64jx"]
 [ext_resource type="Script" path="res://Scripts/difficulty_scaling.gd" id="15_nj3xm"]
@@ -69,38 +69,8 @@ vertical_alignment = 1
 script = ExtResource("3_u2yux")
 player = NodePath("../Player")
 
-[node name="GameOverScreen" type="Node2D" parent="." node_paths=PackedStringArray("score_txt", "game_over_txt", "retry_btn")]
+[node name="GameOverScreen" parent="." instance=ExtResource("8_63tqh")]
 visible = false
-script = ExtResource("10_boq7h")
-score_txt = NodePath("ScoreTxt")
-game_over_txt = NodePath("GameOverTxt1")
-retry_btn = NodePath("RetryBtn")
-
-[node name="GameOverTxt1" type="Label" parent="GameOverScreen"]
-offset_left = -46.0
-offset_top = -90.0
-offset_right = 46.0
-offset_bottom = -67.0
-text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoreTxt" type="Label" parent="GameOverScreen"]
-offset_left = -46.0
-offset_top = -69.0
-offset_right = 46.0
-offset_bottom = -46.0
-text = "Score: "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RetryBtn" type="MenuButton" parent="GameOverScreen"]
-process_mode = 3
-offset_left = -27.0
-offset_top = -46.0
-offset_right = 23.0
-offset_bottom = -15.0
-text = "Retry"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -173,7 +143,6 @@ texture = ExtResource("9_nqfr7")
 
 [connection signal="on_item_collected" from="Player" to="ScoreManager" method="_on_item_collected"]
 [connection signal="on_score_changed" from="ScoreManager" to="ScoreLabel" method="_on_score_manager_on_score_changed"]
-[connection signal="pressed" from="GameOverScreen/RetryBtn" to="GameOverScreen" method="_on_retry_btn_pressed"]
 [connection signal="body_entered" from="Borders/Ground" to="Borders/Ground" method="_on_body_entered"]
 [connection signal="area_entered" from="Borders/Side" to="Borders/Side" method="_on_area_entered"]
 [connection signal="body_entered" from="Borders/Side" to="Borders/Side" method="_on_body_entered"]
