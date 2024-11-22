@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_fgwe3"]
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="1_mot18"]
-[ext_resource type="PackedScene" uid="uid://c6nd4v8iwx72j" path="res://Scenes/level.tscn" id="2_8atu0"]
+[ext_resource type="PackedScene" uid="uid://c6nd4v8iwx72j" path="res://Scenes/level.tscn" id="2_cpxqb"]
 [ext_resource type="Script" path="res://Scripts/file_save_system.gd" id="3_54om0"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_fgwe3")
-game_scene = ExtResource("2_8atu0")
+game_scene = ExtResource("2_cpxqb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

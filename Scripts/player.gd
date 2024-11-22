@@ -5,6 +5,7 @@ signal on_item_collected
 static var instance : Player
 @export var health : Health
 @export var SPEED = 300.0
+@export var collection_sound_effect: AudioStreamPlayer2D
 
 func _ready() -> void:
 	instance = self
