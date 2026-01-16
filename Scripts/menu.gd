@@ -1,9 +1,7 @@
-extends VBoxContainer
-
-@export var game_scene : PackedScene
+extends Node2D
 
 func _on_play_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(game_scene)
+	SceneManager.load_level()
 
 func _on_quit_btn_pressed() -> void:
 	FileSaveSystem.save_game()

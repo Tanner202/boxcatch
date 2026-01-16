@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://5cnbc2j2y22l"]
+[gd_scene load_steps=4 format=3 uid="uid://5cnbc2j2y22l"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_fgwe3"]
+[ext_resource type="Script" uid="uid://bwhk2tmtgr408" path="res://Scripts/menu.gd" id="1_fgwe3"]
 [ext_resource type="Texture2D" uid="uid://d0hoqancristk" path="res://Art/pixel_art_background.jpg" id="1_mot18"]
-[ext_resource type="PackedScene" uid="uid://c6nd4v8iwx72j" path="res://Scenes/level.tscn" id="2_cpxqb"]
-[ext_resource type="Script" path="res://Scripts/file_save_system.gd" id="3_54om0"]
+[ext_resource type="Script" uid="uid://cocar5n4atckh" path="res://Scripts/file_save_system.gd" id="3_54om0"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_fgwe3")
-game_scene = ExtResource("2_cpxqb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -39,5 +37,5 @@ text = "Quit"
 [node name="FileSaveSystem" type="Node2D" parent="."]
 script = ExtResource("3_54om0")
 
-[connection signal="pressed" from="Menu/PlayBtn" to="Menu" method="_on_play_btn_pressed"]
-[connection signal="pressed" from="Menu/QuitBtn" to="Menu" method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="Menu/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Menu/QuitBtn" to="." method="_on_quit_btn_pressed"]

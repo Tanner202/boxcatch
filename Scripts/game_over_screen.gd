@@ -1,8 +1,5 @@
 extends Control
 
-@export_group("Scenes")
-@export var main_menu : PackedScene
-
 @export_group("UI")
 @export var game_over_txt: Label
 @export var score_txt: Label
@@ -28,4 +25,4 @@ func _on_retry_btn_pressed() -> void:
 
 
 func _on_main_menu_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(main_menu)
+	SceneManager.load_menu()
