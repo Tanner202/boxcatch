@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://pde4huodnykn"]
+[gd_scene load_steps=2 format=3 uid="uid://pde4huodnykn"]
 
-[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="1_5u00m"]
-[ext_resource type="PackedScene" uid="uid://5cnbc2j2y22l" path="res://Scenes/main_menu.tscn" id="2_11xwh"]
+[ext_resource type="Script" uid="uid://dyns4478o7xnd" path="res://Scripts/game_over_screen.gd" id="1_5u00m"]
 
 [node name="GameOverScreen" type="Control" node_paths=PackedStringArray("game_over_txt", "score_txt", "high_score_txt", "retry_btn")]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5u00m")
-main_menu = ExtResource("2_11xwh")
 game_over_txt = NodePath("VBoxContainer/GameOverTxt")
 score_txt = NodePath("VBoxContainer/ScoreTxt")
 high_score_txt = NodePath("VBoxContainer/HighScoreTxt")
@@ -59,4 +57,5 @@ layout_mode = 2
 text = "Main Menu
 "
 
+[connection signal="pressed" from="VBoxContainer/RetryBtn" to="." method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
